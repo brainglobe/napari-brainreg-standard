@@ -8,6 +8,8 @@ data_dir = str(Path(__file__).resolve().parent / "data")
 def test_reader():
     # try to read data
     reader = napari_get_reader(str(data_dir))
+    print(str(data_dir))
+    print(reader)
     assert callable(reader)
 
     # make sure we're delivering the right format
