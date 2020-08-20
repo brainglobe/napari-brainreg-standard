@@ -8,7 +8,7 @@
 [![codecov](https://codecov.io/gh/brainglobe/napari-brainreg-standard/branch/master/graph/badge.svg)](https://codecov.io/gh/brainglobe/napari-brainreg-standard)
 [![Gitter](https://badges.gitter.im/cellfinder/brainreg.svg)](https://gitter.im/cellfinder/brainreg?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Visualise [brainreg](https://github.com/brainglobe/brainreg) registration output in [napari](https://github.com/napari/napari)
+Visualise [brainreg](https://github.com/brainglobe/brainreg) registration output in [napari](https://github.com/napari/napari) in standard space
 
 Based on the [napari cookiecutter plugin template](https://github.com/napari/cookiecutter-napari-plugin) and [napari-ndtiffs](https://github.com/tlambert03/napari-ndtiffs) by [@tlambert03](https://github.com/tlambert03)
 
@@ -24,7 +24,6 @@ Open napari and drag your [brainreg](https://github.com/brainglobe/brainreg) out
     
 Various images should then open, including:
 * `Image (downsampled)` - the image used for registration
-* `Annotations` - the atlas labels
 
 If you downsampled additional channels, these will also be loaded.
 
