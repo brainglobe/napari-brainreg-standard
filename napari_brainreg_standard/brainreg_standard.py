@@ -1,7 +1,10 @@
 import os
+import json
 import tifffile
 from pathlib import Path
 from napari_plugin_engine import napari_hook_implementation
+
+from bg_atlasapi.bg_atlas import BrainGlobeAtlas
 
 
 @napari_hook_implementation
@@ -44,16 +47,13 @@ def is_brainreg_dir(path):
     else:
         return False
     for fname in filelist:
-        if fname.endswith(".log") and fname.startswith("brainreg"):
+        if fname == "brainreg.json":
             return True
     return False
 
 
 def load_additional_downsampled_channels(
-    path,
-    layers,
-    extension=".tiff",
-    search_string="downsampled_standard",
+    path, layers, extension=".tiff", search_string="downsampled_standard",
 ):
 
     # Get additional downsampled channels
@@ -83,6 +83,12 @@ def load_additional_downsampled_channels(
     return layers
 
 
+def load_atlas(atlas, layers):
+    atlas_image = BrainGlobeAtlas(atlas).annotation
+    layers.append((atlas_image, {"name": atlas, "visible": False}, "labels",))
+    return layers
+
+
 def reader_function(path):
     """Take a path or list of paths and return a list of LayerData tuples.
 
@@ -108,16 +114,18 @@ def reader_function(path):
 
     print("Loading brainreg directory")
     path = Path(os.path.abspath(path))
+    with open(path / "brainreg.json") as json_file:
+        metadata = json.load(json_file)
 
     layers = []
     layers = load_additional_downsampled_channels(path, layers)
     layers.append(
         (
             tifffile.imread(path / "downsampled_standard.tiff"),
-            {"name": "Image (downsampled)"},
+            {"name": "Image (downsampled)", "metadata": metadata},
             "image",
         )
     )
-
+    layers = load_atlas(metadata["atlas"], layers)
 
     return layers
