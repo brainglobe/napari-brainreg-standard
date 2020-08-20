@@ -44,5 +44,7 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
     ],
-    entry_points={"napari.plugin": ["brainreg_standard = napari_brainreg_standard",],},
+    entry_points={
+        "napari.plugin": ["brainreg_standard = napari_brainreg_standard",],
+    },
 )
