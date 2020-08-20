@@ -4,6 +4,8 @@ import tifffile
 from pathlib import Path
 from napari_plugin_engine import napari_hook_implementation
 
+from bg_atlasapi.bg_atlas import BrainGlobeAtlas
+
 
 @napari_hook_implementation
 def napari_get_reader(path):
@@ -81,6 +83,12 @@ def load_additional_downsampled_channels(
     return layers
 
 
+def load_atlas(atlas, layers):
+    atlas_image = BrainGlobeAtlas(atlas).annotation
+    layers.append((atlas_image, {"name": atlas, "visible": False}, "labels",))
+    return layers
+
+
 def reader_function(path):
     """Take a path or list of paths and return a list of LayerData tuples.
 
@@ -118,5 +126,6 @@ def reader_function(path):
             "image",
         )
     )
+    layers = load_atlas(metadata["atlas"], layers)
 
     return layers
