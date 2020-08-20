@@ -122,7 +122,7 @@ def reader_function(path):
     layers.append(
         (
             tifffile.imread(path / "downsampled_standard.tiff"),
-            {"name": "Image (downsampled)", "metadata": metadata},
+            {"name": "Registered image", "metadata": metadata},
             "image",
         )
     )
