@@ -56,13 +56,13 @@ def load_additional_downsampled_channels(
     search_string="downsampled_standard",
 ):
 
-    # Get additional downsampled channels, but not main one, and not those
-    # in standard space
+    # Get additional downsampled channels
 
     for file in path.iterdir():
         if (
             (file.suffix == extension)
             and file.name.startswith(search_string)
+            and file.name != "downsampled_standard.tiff"
         ):
 
             print(
