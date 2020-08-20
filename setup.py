@@ -21,7 +21,7 @@ setup(
     author="Adam Tyson",
     author_email="adam.tyson@ucl.ac.uk",
     license="MIT",
-    url="https://github.com/brainglobe/napari-brainreg",
+    url="https://github.com/brainglobe/napari-brainreg-standard",
     description="Visualise brainreg registration output in standard space",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
