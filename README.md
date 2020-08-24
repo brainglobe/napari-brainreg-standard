@@ -1,5 +1,7 @@
 # napari-brainreg-standard
 
+**This plugin is now archived, all the functionality is available within [napari-brainreg](https://github.com/brainglobe/napari-brainreg).**
+
 [![License](https://img.shields.io/pypi/l/napari-brainreg-standard.svg?color=green)](https://github.com/brainglobe/napari-brainreg-standard/raw/master/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/napari-brainreg-standard.svg?color=green)](https://pypi.org/project/napari-brainreg-standard)
 [![Python Version](https://img.shields.io/pypi/pyversions/napari-brainreg-standard.svg?color=green)](https://python.org)
